@@ -12,16 +12,16 @@ export async function generateMetadata({
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
     const params = await searchParams;
-    const title = params.title || "Welcome!";
-    const url = params.url || "https://example.com";
-    const image = params.image || "https://cdn.mikn.dev/idk/yui.gif";
-    const description = params.description || "Edit the fields above, and see how the embed will look here.";
-    const color = params.color || "#FF7700";
+    const title = (typeof params.title === 'string' ? params.title : params.title?.[0]) || "Welcome!";
+    const url = (typeof params.url === 'string' ? params.url : params.url?.[0]) || "https://example.com";
+    const image = (typeof params.image === 'string' ? params.image : params.image?.[0]) || "https://cdn.mikn.dev/idk/yui.gif";
+    const description = (typeof params.description === 'string' ? params.description : params.description?.[0]) || "Edit the fields above, and see how the embed will look here.";
+    const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
     const link = `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`;
 
     return {
-        title,
-        description,
+        title: title,
+        description: description,
         robots: {
             index: false,
         },
@@ -41,11 +41,11 @@ export default async function Page({
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
     const params = await searchParams;
-    const title = params.title || "Welcome!";
-    const url = params.url || "https://example.com";
-    const image = params.image || "https://cdn.mikn.dev/idk/yui.gif";
-    const description = params.description || "Edit the fields above, and see how the embed will look here.";
-    const color = params.color || "#FF7700";
+    const title = (typeof params.title === 'string' ? params.title : params.title?.[0]) || "Welcome!";
+    const url = (typeof params.url === 'string' ? params.url : params.url?.[0]) || "https://example.com";
+    const image = (typeof params.image === 'string' ? params.image : params.image?.[0]) || "https://cdn.mikn.dev/idk/yui.gif";
+    const description = (typeof params.description === 'string' ? params.description : params.description?.[0]) || "Edit the fields above, and see how the embed will look here.";
+    const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
     const link = `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`;
 }
 
