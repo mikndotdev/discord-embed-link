@@ -13,11 +13,8 @@ export async function generateMetadata({
 }) {
     const params = await searchParams;
     const title = (typeof params.title === 'string' ? params.title : params.title?.[0]) || "Welcome!";
-    const url = (typeof params.url === 'string' ? params.url : params.url?.[0]) || "https://example.com";
     const image = (typeof params.image === 'string' ? params.image : params.image?.[0]) || "https://cdn.mikn.dev/idk/yui.gif";
     const description = (typeof params.description === 'string' ? params.description : params.description?.[0]) || "Edit the fields above, and see how the embed will look here.";
-    const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
-    const link = `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`;
 
     return {
         title: title,
@@ -35,6 +32,19 @@ export async function generateMetadata({
     };
 }
 
+export async function generateViewport({
+                                           searchParams,
+                                       }: {
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+    const params = await searchParams;
+    const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
+
+    return {
+        themeColor: color,
+    };
+}
+
 export default async function Page({
                                            searchParams,
                                        }: {
@@ -47,5 +57,9 @@ export default async function Page({
     const description = (typeof params.description === 'string' ? params.description : params.description?.[0]) || "Edit the fields above, and see how the embed will look here.";
     const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
     const link = `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`;
+
+    return (
+
+    )
 }
 
