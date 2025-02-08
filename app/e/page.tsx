@@ -45,6 +45,8 @@ export async function generateViewport({
     };
 }
 
+import hiiragi from "../app/assets/hiiragi.gif";
+
 export default async function Page({
                                            searchParams,
                                        }: {
@@ -56,10 +58,31 @@ export default async function Page({
     const image = (typeof params.image === 'string' ? params.image : params.image?.[0]) || "https://cdn.mikn.dev/idk/yui.gif";
     const description = (typeof params.description === 'string' ? params.description : params.description?.[0]) || "Edit the fields above, and see how the embed will look here.";
     const color = (typeof params.color === 'string' ? params.color : params.color?.[0]) || "#FF7700";
-    const link = `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`;
 
     return (
-
+        <main className="flex justify-center items-center min-h-screen">
+            <div className="flex justify-center items-center bg-gray-600 rounded-lg p-4">
+                <div className="w-full max-w-md">
+                    <DiscordMessages>
+                        <DiscordMessage
+                            author="example"
+                            avatar={hiiragi.src}
+                        >
+                            https://embedlink.mikn.dev/e/example
+                            <DiscordEmbed
+                                slot="embeds"
+                                title={title}
+                                image={image}
+                                url={url}
+                                color={color}
+                            >
+                                {description}
+                            </DiscordEmbed>
+                        </DiscordMessage>
+                    </DiscordMessages>
+                </div>
+            </div>
+        </main>
     )
 }
 
