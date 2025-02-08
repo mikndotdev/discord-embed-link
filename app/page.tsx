@@ -5,6 +5,7 @@ import {
     DiscordMessages,
     DiscordEmbed,
 } from "@danktuary/react-discord-message";
+import { encodeURIComponent } from 'js-base64';
 import { CirclePicker } from "react-color";
 import { toast } from "sonner";
 
@@ -26,7 +27,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-        setLink(`https://embedlink.mikn.dev/e?title=${title}&image=${image}&description=${description}&color=${color}`);
+        setLink(`https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`);
     }, [title, url, image, description]);
 
     return (
