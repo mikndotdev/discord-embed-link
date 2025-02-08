@@ -6,6 +6,7 @@ import {
     DiscordEmbed,
 } from "@danktuary/react-discord-message";
 import { CirclePicker } from "react-color";
+import { toast } from "sonner";
 
 import hiiragi from "./assets/hiiragi.gif"
 
@@ -17,7 +18,12 @@ export default function Home() {
         "Edit the fields above, and see how the embed will look here.",
     );
     const [color, setColor] = useState("#FF7700");
-    const [link, setLink] = useState("");
+    const [link, setLink] = useState("https://embedlink.mikn.dev/e");
+
+    const copyLink = () => {
+        navigator.clipboard.writeText(link);
+        toast.success("Copied link to clipboard!");
+    }
 
     useEffect(() => {
         setLink(`https://embedlink.mikn.dev/e?title=${title}&image=${image}&description=${description}&color=${color}`);
@@ -27,7 +33,7 @@ export default function Home() {
         <main className="flex justify-center items-center min-h-screen">
             <div className="flex flex-col md:flex-row w-full max-w-5xl p-4 space-y-4 md:space-y-0 md:space-x-4">
                 {/* Input Section */}
-                <div className="md:w-1/2 flex flex-col items-center bg-gray-600 rounded-lg p-4 space-y-4">
+                <div className="md:w-1/2 flex flex-col items-center bg-gray-600 rounded-lg p-4 space-y-6">
                     <h1 className="text-2xl font-bold text-center text-white">
                         Link to Discord Embed
                     </h1>
@@ -67,9 +73,12 @@ export default function Home() {
                         onChange={(color: any) => setColor(color.hex)}
                         className="w-full"
                     />
+                    <div>
+                        <button className="btn btn-success text-white" onClick={copyLink}>
+                            Copy URL
+                        </button>
+                    </div>
                 </div>
-
-                {/* Preview Section */}
                 <div className="md:w-1/2 flex justify-center items-center bg-gray-600 rounded-lg p-4">
                     <div className="w-full max-w-md">
                         <DiscordMessages>
@@ -87,9 +96,6 @@ export default function Home() {
                             </DiscordMessage>
                         </DiscordMessages>
                     </div>
-                </div>
-                <div className="mt-10">
-                    <button className="btn btn-primary"/>
                 </div>
             </div>
         </main>
