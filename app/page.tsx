@@ -32,7 +32,7 @@ export default function Home() {
         setLink(
             `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`,
         );
-    }, [title, url, image, description]);
+    }, [title, url, image, description, color]);
 
     return (
         <main className="flex justify-center items-center min-h-screen">
