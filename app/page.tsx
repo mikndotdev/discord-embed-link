@@ -24,10 +24,11 @@ export default function Home() {
     }, [title, url, image, description]);
 
     return (
-        <main>
-            <div className="flex flex-row justify-center items-center">
-                <div className="card w-1/2 min-h-96 bg-gray-600 rounded-lg mt-10 flex flex-col justify-center items-center space-y-5">
-                    <h1 className="text-4xl font-bold text-center text-white mt-5">
+        <main className="flex justify-center items-center min-h-screen">
+            <div className="flex flex-col md:flex-row w-full max-w-5xl p-4 space-y-4 md:space-y-0 md:space-x-4">
+                {/* Input Section */}
+                <div className="md:w-1/2 flex flex-col items-center bg-gray-600 rounded-lg p-4 space-y-4">
+                    <h1 className="text-2xl font-bold text-center text-white">
                         Link to Discord Embed
                     </h1>
                     <input
@@ -63,7 +64,11 @@ export default function Home() {
                         onChange={(color: any) => setColor(color.hex)}
                         className="w-full"
                     />
-                    <div className="max-w-2/3">
+                </div>
+
+                {/* Preview Section */}
+                <div className="md:w-1/2 flex justify-center items-center bg-gray-600 rounded-lg p-4">
+                    <div className="w-full max-w-md">
                         <DiscordMessages>
                             <DiscordMessage author="example" avatar={hiiragi.src}>
                                 https://embedlink.mikn.dev/e/
@@ -79,7 +84,6 @@ export default function Home() {
                             </DiscordMessage>
                         </DiscordMessages>
                     </div>
-                    <div className="mb-10"/>
                 </div>
             </div>
         </main>
