@@ -75,7 +75,7 @@ export default function Home() {
                     </h3>
                     <CirclePicker
                         color={color}
-                        onChange={(color: any) => setColor(color.hex)}
+                        onChange={(color: any) => setColor(color.hex.replace("#", ""))}
                         className="w-full"
                     />
                     <div>

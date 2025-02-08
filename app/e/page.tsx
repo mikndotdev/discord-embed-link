@@ -42,10 +42,10 @@ export async function generateViewport({
     const params = await searchParams;
     const color =
         (typeof params.color === "string" ? params.color : params.color?.[0]) ||
-        "#FF7700";
+        "FF7700";
 
     return {
-        themeColor: color,
+        themeColor: `#${color}`,
     };
 }
 
