@@ -1,15 +1,17 @@
 "use client";
+
+export const runtime = "edge";
+
 import { useState, useEffect } from "react";
 import {
     DiscordMessage,
     DiscordMessages,
     DiscordEmbed,
 } from "@danktuary/react-discord-message";
-import { encodeURIComponent } from 'js-base64';
 import { CirclePicker } from "react-color";
 import { toast } from "sonner";
 
-import hiiragi from "./assets/hiiragi.gif"
+import hiiragi from "./assets/hiiragi.gif";
 
 export default function Home() {
     const [title, setTitle] = useState("Welcome!");
@@ -24,10 +26,12 @@ export default function Home() {
     const copyLink = () => {
         navigator.clipboard.writeText(link);
         toast.success("Copied link to clipboard!");
-    }
+    };
 
     useEffect(() => {
-        setLink(`https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`);
+        setLink(
+            `https://embedlink.mikn.dev/e?title=${encodeURIComponent(title)}&image=${encodeURIComponent(image)}&description=${encodeURIComponent(description)}&color=${color}`,
+        );
     }, [title, url, image, description]);
 
     return (
@@ -75,7 +79,10 @@ export default function Home() {
                         className="w-full"
                     />
                     <div>
-                        <button className="btn btn-success text-white" onClick={copyLink}>
+                        <button
+                            className="btn btn-success text-white"
+                            onClick={copyLink}
+                        >
                             Copy URL
                         </button>
                     </div>
@@ -83,8 +90,11 @@ export default function Home() {
                 <div className="md:w-1/2 flex justify-center items-center bg-gray-600 rounded-lg p-4">
                     <div className="w-full max-w-md">
                         <DiscordMessages>
-                            <DiscordMessage author="example" avatar={hiiragi.src}>
-                                https://embedlink.mikn.dev/e/
+                            <DiscordMessage
+                                author="example"
+                                avatar={hiiragi.src}
+                            >
+                                https://embedlink.mikn.dev/e/example
                                 <DiscordEmbed
                                     slot="embeds"
                                     title={title}
