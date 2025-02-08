@@ -17,7 +17,11 @@ export default function Home() {
     );
     const [link, setLink] = useState("");
 
-    useEffect()
+    useEffect(() => {
+        // You can add any side-effect logic here that depends on the state variables.
+        // For example, you could update the document title or perform some calculations.
+        console.log("State variables changed:", { title, url, image, description });
+    }, [title, url, image, description]);
 
     return (
         <main>
