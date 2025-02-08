@@ -5,6 +5,7 @@ import {
     DiscordMessages,
     DiscordEmbed,
 } from "@danktuary/react-discord-message";
+import { CirclePicker } from "react-color";
 
 import hiiragi from "./assets/hiiragi.gif"
 
@@ -15,12 +16,11 @@ export default function Home() {
     const [description, setDescription] = useState(
         "Edit the fields above, and see how the embed will look here.",
     );
+    const [color, setColor] = useState("#FF7700");
     const [link, setLink] = useState("");
 
     useEffect(() => {
-        // You can add any side-effect logic here that depends on the state variables.
-        // For example, you could update the document title or perform some calculations.
-        console.log("State variables changed:", { title, url, image, description });
+        setLink(`https://embedlink.mikn.dev/e?title=${title}&image=${image}&description=${description}&color=${color}`);
     }, [title, url, image, description]);
 
     return (
@@ -58,15 +58,21 @@ export default function Home() {
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                     />
-                    <div className="min-w-2/3">
+                    <CirclePicker
+                        color={color}
+                        onChange={(color: any) => setColor(color.hex)}
+                        className="w-full"
+                    />
+                    <div className="max-w-2/3">
                         <DiscordMessages>
                             <DiscordMessage author="example" avatar={hiiragi.src}>
-                                {link}
+                                https://embedlink.mikn.dev/e/
                                 <DiscordEmbed
                                     slot="embeds"
                                     title={title}
                                     image={image}
                                     url={url}
+                                    color={color}
                                 >
                                     {description}
                                 </DiscordEmbed>
