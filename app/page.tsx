@@ -59,6 +59,9 @@ export default function Home() {
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
                     />
+                    <h3 className="font-bold text-md text-white">
+                        Pick a colour for your embed
+                    </h3>
                     <CirclePicker
                         color={color}
                         onChange={(color: any) => setColor(color.hex)}
@@ -84,6 +87,9 @@ export default function Home() {
                             </DiscordMessage>
                         </DiscordMessages>
                     </div>
+                </div>
+                <div className="mt-10">
+                    <button className="btn btn-primary"/>
                 </div>
             </div>
         </main>
