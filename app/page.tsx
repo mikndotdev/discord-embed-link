@@ -100,7 +100,7 @@ export default function Home() {
                                     title={title}
                                     image={image}
                                     url={url}
-                                    color={color}
+                                    color=`#${color}`
                                 >
                                     {description}
                                 </DiscordEmbed>
