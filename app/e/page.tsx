@@ -8,15 +8,14 @@ export async function generateMetadata({
     const params = await searchParams;
     const title =
         (typeof params.title === "string" ? params.title : params.title?.[0]) ||
-        "Welcome!";
+        "";
     const image =
         (typeof params.image === "string" ? params.image : params.image?.[0]) ||
-        "https://cdn.mikn.dev/idk/yui.gif";
+        "";
     const description =
         (typeof params.description === "string"
             ? params.description
-            : params.description?.[0]) ||
-        "Edit the fields above, and see how the embed will look here.";
+            : params.description?.[0]) || "";
 
     return {
         title: title,
